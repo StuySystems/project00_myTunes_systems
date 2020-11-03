@@ -12,6 +12,7 @@ node.o:
 
 run:
 	./main
+	make clean
 
 clean:
 	rm *.o
