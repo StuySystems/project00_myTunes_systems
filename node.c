@@ -146,14 +146,14 @@ struct song_node* remove_song(struct song_list *sl, char name[], char artist[]){
 
 //freeing the song nodes
 struct song_node* free_song_list(struct song_list* sl){
-	struct song_node* track= sl->head;
+  struct song_node* track= sl->head;
   struct song_node* next;
-	while (track){
-		printf("Freeing node:\n");
+  while (track){
+    printf("Freeing node:\n");
     print_song(track);
-		next=track->next; //keeping track of the next player
-		free(track);
-		track=next; //going to next player
-	}
-	return NULL;
+    next=track->next; //keeping track of the next player
+    free(track);
+    track=next; //going to next player
+  }
+  return NULL;
 }
