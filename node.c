@@ -122,26 +122,26 @@ int song_list_len(struct song_list* sl){
 //removes a song node from the song list based on given name and artist
 struct song_node* remove_song(struct song_list *sl, char name[], char artist[]){
   struct song_node* track= sl->head;
-	struct song_node* previous = NULL;
+  struct song_node* previous = NULL;
 
-	while (track){
+  while (track){
 
     if (strcmp(name, track->name)==0 && strcmp(artist, track->artist)==0){
       if (previous){
         previous->next=track->next;
         free(track);
         break;
-			}
-			else{
+      }
+      else{
         sl->head=track->next;
         break;
       }
-		}
+    }
     previous=track;
     track=track->next;
-	}
+  }
 
-	return sl->head;
+  return sl->head;
 }
 
 //freeing the song nodes
