@@ -83,24 +83,34 @@ struct song_node* find_song(struct song_list* sl, char name[], char artist[]){
     if (strcmp(name, track->name)==0 && strcmp(artist, track->artist)==0) return track;
     track= track->next;
   }
+
   return NULL;
 }
 
 //returns the first song of the given artist
-struct song_node* find_artist_song(struct song_list* sl, char artist[]){
+struct song_node* find_artist(struct song_list* sl, char artist[]){
   struct song_node* track= sl-> head;
   while (track){
     if (strcmp(artist, track->artist)==0) return track;
     track= track->next;
   }
+
   return NULL;
+}
+
+void print_artist_songs(struct song_list* sl, struct song_node* sn, char artist[]){
+  while (strcmp(artist, sn->artist)==0 && sn){
+    printf("%s | ", sn->name);
+    sn=sn->next;
+  }
+  printf("\n");
 }
 
 //returns a random song node in the list
 struct song_node* rand_song(struct song_list* sl){
   struct song_node* track;
   srand(time(NULL));
-  random=rand()%song_list_len(sl);
+  int random=rand()%song_list_len(sl);
   while (random){
     track=track->next;
     random--;
@@ -148,6 +158,7 @@ struct song_node* remove_song(struct song_list *sl, char name[], char artist[]){
 struct song_node* free_song_list(struct song_list* sl){
   struct song_node* track= sl->head;
   struct song_node* next;
+
   while (track){
     printf("Freeing node:\n");
     print_song(track);

@@ -18,6 +18,11 @@ struct song_list* new_list();
 int songcmp(struct song_node* s1, struct song_node* s2);
 void print_song(struct song_node * sn);
 void print_list(struct song_list* sl);
-
+struct song_node* find_song(struct song_list* sl, char name[], char artist[]);
+struct song_node* find_artist(struct song_list* sl, char artist[]);
+struct song_node* rand_song(struct song_list* sl);
+int song_list_len(struct song_list* sl);
+struct song_node* remove_song(struct song_list *sl, char name[], char artist[]);
+struct song_node* free_song_list(struct song_list* sl);
 
 #endif
