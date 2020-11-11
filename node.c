@@ -128,17 +128,17 @@ struct song_node* remove_song(struct song_list *sl, char name[], char artist[]){
 
     if (strcmp(name, track->name)==0 && strcmp(artist, track->artist)==0){
       if (previous){
-				previous->next=track->next;
-				free(track);
-				break;
+        previous->next=track->next;
+        free(track);
+        break;
 			}
 			else{
         sl->head=track->next;
         break;
       }
 		}
-		previous=track;
-		track=track->next;
+    previous=track;
+    track=track->next;
 	}
 
 	return sl->head;
