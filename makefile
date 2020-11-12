@@ -1,5 +1,6 @@
 all: main.o lib.o node.o
 	gcc -o main main.o lib.o node.o
+	make clean
 
 main.o:
 	gcc -c main.c lib.h node.h

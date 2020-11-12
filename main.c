@@ -40,7 +40,7 @@ int main(int argc, char const *argv[]) {
     printf("********************************************\n");
 
     printf("Testing rand_song:\n");
-    struct song_node* sn5= rand_song(sl);
+    struct song_node* sn5 = rand_song(sl);
     print_song(sn5);
     printf("********************************************\n");
 
@@ -55,6 +55,98 @@ int main(int argc, char const *argv[]) {
     printf("List after free_song_list:\n");
     print_list(sl);
     printf("********************************************\n");
+
+    printf("\nMUSIC LIBRARY TESTS\n\n");
+    struct song_library *library;
+    library = new_lib();
+
+    library = lib_place_song(library, "Money Trees", "Kendrick Lamar");
+    library = lib_place_song(library, "Heard 'em Say" , "Kanye West");
+    library = lib_place_song(library, "Rich and Sad", "Post Malone");
+    library = lib_place_song(library, "Heart Mind", "Kodak Black");
+    library = lib_place_song(library, "Stay", "Post Malone");
+    library = lib_place_song(library, "Star67", "Drake");
+    
+
+    printf("********************************************\n");
+
+    printf("\nTesting print_letter\n");
+    printf("p list:\n");
+    lib_list_print(library, 'P');
+    printf("\nk list:\n");
+    lib_list_print(library, 'K');
+    printf("********************************************\n");
+
+    printf("\nTesting find_artist\n");
+    struct song_node *node;
+    node = lib_find_artist(library, "Drake");
+    printf("looking for [Drake]\n");
+    if (node)
+    {
+      printf("Artist found! [Drake]\n");
+    }
+    else
+    {
+      printf("Artist not found.\n");
+    }
+
+    node = lib_find_artist(library, "Jeff Jones");
+    printf("looking for [Jeff Jones]\n");
+    if (node)
+    {
+      printf("Artist found! [Jeff Jones]\n");
+    }
+    else
+    {
+      printf("Artist not found.\n");
+    }
+
+    printf("********************************************\n");
+    printf("\nTesting find_song\n");
+    node = lib_find_song(library, "Star67", "Drake");
+    printf("looking for [Drake: Star67]\n");
+    if (node)
+    {
+      printf("Song found! [Drake: Star67]\n");
+    }
+    else
+    {
+      printf("Song not found.\n");
+    }
+
+    node = lib_find_song(library, "Duckworth", "Kendrick Lamar");
+    printf("looking for [Kendrick Lamar: Duckworth]\n");
+    if (node)
+    {
+      printf("Song found! [Kendrick Lamar: Duckworth]\n");
+    }
+    else
+    {
+      printf("Song not found.\n");
+    }
+
+    printf("********************************************\n");
+    printf("\nTesting shuffle\n");
+    shuffle(library);
+
+    printf("********************************************\n");
+    printf("\nTesting print_library\n");
+    lib_print_lib(library);
+    printf("********************************************\n");
+    printf("\nTesting remove song:\n\n");
+    printf("Pre remove:\n");
+    lib_list_print(library, 'D');
+    library = delete_song(library, "Star67", "Drake");
+    printf("Post remove:\n");
+    lib_list_print(library, 'D');
+    printf("********************************************\n");
+    printf("\nTesting clear list:\n\n");
+    printf("Library before clear:\n");
+    lib_print_lib(library);
+    printf("--------- CLEARING ---------\n");
+    library = clear_lib(library);
+    printf("\nLibrary after clear:\n");
+    lib_print_lib(library);
 
     return 0;
 }
