@@ -23,6 +23,7 @@ struct song_node* find_artist(struct song_list* sl, char artist[]);
 struct song_node* rand_song(struct song_list* sl);
 int song_list_len(struct song_list* sl);
 struct song_node* remove_song(struct song_list *sl, char name[], char artist[]);
-struct song_node* free_song_list(struct song_list* sl);
+struct song_list* free_song_list(struct song_list* sl);
+void print_artist_songs(struct song_node* sn, char artist[]);
 
 #endif
