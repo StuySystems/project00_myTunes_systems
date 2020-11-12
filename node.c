@@ -166,5 +166,6 @@ struct song_list* free_song_list(struct song_list* sl){
     free(track);
     track=next; //going to next player
   }
+  sl->head = NULL;
   return NULL;
 }
